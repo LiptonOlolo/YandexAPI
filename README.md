@@ -56,6 +56,7 @@ var res = speller.CheckText("Превет");
 for (int i = 0; i < res.s.Length; i++)
     Console.WriteLine($"Я думаю, что тут должно быть '{res.s[i]}'");
 ```
+![alt text](http://joxi.ru/4Ak3ZKpUyBdPaA.png)
 
 ### YandexAPI.Linguistics.Translate
 
