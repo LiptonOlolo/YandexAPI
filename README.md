@@ -4,7 +4,7 @@
 
 ### YandexAPI.Linguistics.Dictionary
 ```C#
-#r "C:\Users\Allah\Desktop\YandexAPI\YandexAPI\bin\Release\YandexAPI.dll"
+#r "YandexAPI.dll"
 using YandexAPI.Linguistics.Dictionary;
 YandexDictionary yd = new YandexDictionary("apikey");
 ```
@@ -23,7 +23,7 @@ var res = yd.Lookup("ru-ru", "время");
 ### YandexAPI.Linguistics.Predictor
 
 ```C#
-#r "C:\Users\Allah\Desktop\YandexAPI\YandexAPI\bin\Release\YandexAPI.dll"
+#r "YandexAPI.dll"
 using YandexAPI.Linguistics.Predictor;
 YandexPredictor yp = new YandexPredictor("apikey");
 ```
@@ -47,7 +47,7 @@ for (int i = 0; i < res.text.Length; i++)
 Спеллер работает без API ключа (!)
 
 ```C#
-#r "C:\Users\Allah\Desktop\YandexAPI\YandexAPI\bin\Release\YandexAPI.dll"
+#r "YandexAPI.dll"
 using YandexAPI.Linguistics.Speller;
 YandexSpeller speller = new YandexSpeller();
 
@@ -60,7 +60,7 @@ for (int i = 0; i < res.s.Length; i++)
 ### YandexAPI.Linguistics.Translate
 
 ```C#
-#r "C:\Users\Allah\Desktop\YandexAPI\YandexAPI\bin\Release\YandexAPI.dll"
+#r "YandexAPI.dll"
 using YandexAPI.Linguistics.Translate;
 YandexTranslate ytr = new YandexTranslate("apikey");
 ```
