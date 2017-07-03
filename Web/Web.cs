@@ -22,7 +22,7 @@ namespace YandexAPI
             Proxy = new WebProxy()
         }.DownloadString(uri);
 
-        static string GetUri(string uri, Dictionary<string, string> get)
+        internal static string GetUri(string uri, Dictionary<string, string> get)
         {
             uri += "?";
             foreach (KeyValuePair<string, string> value in get)
