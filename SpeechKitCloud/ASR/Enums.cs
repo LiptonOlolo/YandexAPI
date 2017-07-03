@@ -8,7 +8,7 @@
         private AudioFormat(string format) => this.format = format;
 
         /// <summary>
-        /// Формат аудон.
+        /// Формат аудио.
         /// </summary>
         public readonly string format;
 
