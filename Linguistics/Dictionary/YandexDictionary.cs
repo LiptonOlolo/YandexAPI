@@ -13,16 +13,12 @@ namespace YandexAPI.Linguistics.Dictionary
         const string API_GetLangs = Const.DictionaryAPI + "getLangs";
         const string API_lookup = Const.DictionaryAPI + "lookup";
 
-        public YandexDictionary()
-        {
-        }
-
         public YandexDictionary(string apiKey) => ApiKey = apiKey;
 
         /// <summary>
         /// Api ключ для словаря, начинается с 'dict'.
         /// </summary>
-        public string ApiKey { get; set; }
+        public string ApiKey { get; private set; }
 
         /// <summary>
         /// Асинхронно возвращает список направлений перевода, поддерживаемых сервисом.

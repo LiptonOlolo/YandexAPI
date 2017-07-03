@@ -13,15 +13,12 @@ namespace YandexAPI.Linguistics.Translate
         const string API_DetectLang = Const.TranslateAPI + "detect";
         const string API_Translate = Const.TranslateAPI + "translate";
 
-        public YandexTranslate()
-        {
-        }
         public YandexTranslate(string apiKey) => ApiKey = apiKey;
 
         /// <summary>
         /// Api ключ для переводчика, начинается с 'trnsl'.
         /// </summary>
-        public string ApiKey { get; set; }
+        public string ApiKey { get; private set; }
 
         /// <summary>
         /// Асинхронное определение языка, на котором написан заданный текст.

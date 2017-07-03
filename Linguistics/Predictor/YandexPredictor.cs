@@ -13,15 +13,12 @@ namespace YandexAPI.Linguistics.Predictor
         const string API_GetLangs = Const.PredictorAPI + "getLangs";
         const string API_Complete = Const.PredictorAPI + "complete";
 
-        public YandexPredictor()
-        {
-        }
         public YandexPredictor(string apiKey) => ApiKey = apiKey;
 
         /// <summary>
         /// Api ключ для предиктора, начинается с 'pdct'.
         /// </summary>
-        public string ApiKey { get; set; }
+        public string ApiKey { get; private set; }
 
         /// <summary>
         /// Асинхронно возвращает список языков, поддерживаемых сервисом.
