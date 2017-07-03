@@ -2,6 +2,40 @@
 
 # Примеры работы в RoslynPad:
 
+### YandexAPI.SpeechKitCloud.TTS
+```C#
+#r "YandexAPI.dll"
+using YandexAPI.SpeechKitCloud;
+using YandexAPI.SpeechKitCloud.TTS;
+YandexTTS tts = new YandexTTS("tts_or_asr_apikey");
+```
+
+```C#
+byte[] voice = tts.GetVoice("Привет, Мир!", Lang.Ru);
+
+tts.SaveAudio(voice, "helloworld", @"C:\Users\User\Desktop\", Format.MP3);
+```
+
+### YandexAPI.SpeechKitCloud.ASR
+```C#
+#r "YandexAPI.dll"
+using YandexAPI.SpeechKitCloud;
+using YandexAPI.SpeechKitCloud.TTS;
+using YandexAPI.SpeechKitCloud.ASR;
+YandexTTS tts = new YandexTTS("tts_or_asr_apikey");
+YandexASR asr = new YandexASR("tts_or_asr_apikey");
+```
+
+```C#
+byte[] voice = tts.GetVoice("Привет, Мир!", Lang.Ru); //Получаем голос
+AsrResponse response = asr.VoiceToText(voice, Topic.Queries, Lang.Ru, AudioFormat.MP3); //Получаем варианты текста из голоса
+
+foreach (Variant variant in response.variant)
+    Console.WriteLine($"Мне кажется, что там сказано '{variant.text}'");
+```
+
+![alt text](http://joxi.ru/8AnX3R6fjg5Nzm.png)
+
 ### YandexAPI.Linguistics.Dictionary
 ```C#
 #r "YandexAPI.dll"
