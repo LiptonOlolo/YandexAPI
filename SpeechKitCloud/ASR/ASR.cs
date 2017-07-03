@@ -78,17 +78,17 @@ namespace YandexAPI.SpeechKitCloud.ASR
 
             dynamic des = JsonConvert.DeserializeObject(jsonText);
 
-            response.success = des["recognitionResults"]["success"].ToString();
+            response.Success = des["recognitionResults"]["success"].ToString();
 
             if (des["recognitionResults"]["variant"].Count == null)
-                response.variant.Add(new Variant(des["recognitionResults"]["variant"]["confidence"].ToString(),
+                response.Variants.Add(new Variant(des["recognitionResults"]["variant"]["confidence"].ToString(),
                                                  des["recognitionResults"]["variant"]["text"].ToString()));
             else
             {
                 int count = des["recognitionResults"]["variant"].Count;
 
                 for (int i = 0; i < count; i++)
-                    response.variant.Add(new Variant(des["recognitionResults"]["variant"][i]["confidence"].ToString(),
+                    response.Variants.Add(new Variant(des["recognitionResults"]["variant"][i]["confidence"].ToString(),
                                  des["recognitionResults"]["variant"][i]["text"].ToString()));
             }
 

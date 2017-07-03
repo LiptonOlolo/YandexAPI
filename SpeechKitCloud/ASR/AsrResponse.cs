@@ -4,19 +4,19 @@ namespace YandexAPI.SpeechKitCloud.ASR
 {
     public class AsrResponse
     {
-        public string success;
-        public readonly List<Variant> variant = new List<Variant>();
+        public string Success;
+        public readonly List<Variant> Variants = new List<Variant>();
     }
 
     public class Variant
     {
-        public Variant(string con, string t)
+        public Variant(string confidence, string text)
         {
-            confidence = con;
-            text = t;
+            Confidence = confidence;
+            Text = text;
         }
 
-        public readonly string confidence;
-        public readonly string text;
+        public readonly string Confidence;
+        public readonly string Text;
     }
 }
