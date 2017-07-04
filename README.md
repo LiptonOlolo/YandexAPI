@@ -123,3 +123,5 @@ Console.WriteLine($"Текст переведен {res.text[0]} [{res.lang}]");
 ```
 
 ![alt text](http://joxi.ru/vAWDVP3u1X9vXr.png)
+
+#### Создано при помощи tech.yandex.ru
