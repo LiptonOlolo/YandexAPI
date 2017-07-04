@@ -1,80 +1,35 @@
 ﻿using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using System;
-using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Net;
 using System.Text;
-using YandexAPI.Linguistics.Response;
-
-/*
- * 
- * Пожалуйста, не смотрите код ниже, это Вас убьет.
- * 
- */
 
 namespace YandexAPI
 {
     static class Web
     {
-        static string GetString(string uri) => new WebClient
-        {
-            Encoding = Encoding.UTF8,
-            Proxy = new WebProxy()
-        }.DownloadString(uri);
+        static WebClient CreateClient() => new WebClient { Encoding = Encoding.UTF8, Proxy = new WebProxy() };
 
-        internal static string GetUri(string uri, Dictionary<string, string> get)
+        /// <summary>
+        /// Получить ответ от API в виде массива байт.
+        /// </summary>
+        /// <returns></returns>
+        public static byte[] GetData(string uri, NameValueCollection get)
         {
-            uri += "?";
-            foreach (KeyValuePair<string, string> value in get)
-                uri += $"{value.Key}={value.Value}&";
-
-            return uri;
+            using (WebClient client = CreateClient())
+                return client.UploadValues(uri, get);
         }
 
-        static T GetStringType<T>(string uri, Dictionary<string, string> get, out string responseText)
-        {
-            responseText = GetString(GetUri(uri, get));
-            return JsonConvert.DeserializeObject<T>(responseText);
-        }
+        static string GetString(string uri, NameValueCollection get) => Encoding.UTF8.GetString(GetData(uri, get));
 
-        public static T Get<T>(string uri, Dictionary<string, string> get, string apikey, bool writeApi = true, bool checkError = true)
+        /// <summary>
+        /// Получить ответ от API в нужном типе данных.
+        /// </summary>
+        public static T Get<T>(string uri, NameValueCollection get, string apikey, bool writeApi = true)
         {
-            string rText;
-
-            if (writeApi)
+            if (writeApi || apikey != null)
                 get.Add("key", apikey);
 
-            if (!checkError)
-                return GetStringType<T>(uri, get, out rText);
-
-            Error err = GetStringType<Error>(uri, get, out rText);
-
-            if (err)
-                return JsonConvert.DeserializeObject<T>(rText);
-
-            throw new Exception($"Get data from API error: code {err.code}, message: {err.message}");
-        }
-
-        public static IEnumerable<string> GetJsonArray(string uri, Dictionary<string, string> get, string apikey) //Слишком говнокод
-        {
-            if (apikey != null)
-                get.Add("key", apikey);
-
-            string response = GetString(GetUri(uri, get));
-
-            if (response.IndexOf("code\":1") > 1 || !response.Contains("{\"code\":"))
-            {
-                var arr = JArray.Parse(response);
-                int count = arr.Count;
-
-                for (int i = 0; i < count; i++)
-                    yield return arr[i].ToString();
-            }
-            else
-            {
-                Error err = JsonConvert.DeserializeObject<Error>(response);
-                throw new Exception($"Get data from API error: code {err.code}, message: {err.message}");
-            }
+            return JsonConvert.DeserializeObject<T>(GetString(uri, get));
         }
     }
 }

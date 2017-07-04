@@ -4,7 +4,7 @@ namespace YandexAPI.SpeechKitCloud.ASR
 {
     public class AsrResponse
     {
-        public string Success;
+        public bool Success;
         public readonly List<Variant> Variants = new List<Variant>();
     }
 
@@ -12,11 +12,11 @@ namespace YandexAPI.SpeechKitCloud.ASR
     {
         public Variant(string confidence, string text)
         {
-            Confidence = confidence;
+            Confidence = float.Parse(confidence.Replace('.', ','));
             Text = text;
         }
 
-        public readonly string Confidence;
+        public readonly float Confidence;
         public readonly string Text;
     }
 }

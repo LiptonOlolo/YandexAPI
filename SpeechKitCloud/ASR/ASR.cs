@@ -1,5 +1,4 @@
 ﻿using Newtonsoft.Json;
-using System.Collections.Generic;
 using System.IO;
 using System.Net;
 using System.Threading.Tasks;
@@ -12,6 +11,10 @@ namespace YandexAPI.SpeechKitCloud.ASR
     /// </summary>
     public sealed class YandexASR
     {
+        /// <summary>
+        /// Конструктор класса YandexASR.
+        /// </summary>
+        /// <param name="apiKey">Api ключ для распознавания речи.</param>
         public YandexASR(string apiKey) => ApiKey = apiKey;
 
         /// <summary>
@@ -51,15 +54,7 @@ namespace YandexAPI.SpeechKitCloud.ASR
         /// <returns></returns>
         public AsrResponse VoiceToText(byte[] voice, Topic topic, Lang lang, AudioFormat audioFormat)
         {
-            Dictionary<string, string> get = new Dictionary<string, string>()
-            {
-                ["uuid"] = UUId,
-                ["key"] = ApiKey,
-                ["topic"] = topic.model,
-                ["lang"] = lang.lang
-            };
-
-            HttpWebRequest req = (HttpWebRequest)WebRequest.Create(Web.GetUri(Const.ARSAPI, get));
+            HttpWebRequest req = (HttpWebRequest)WebRequest.Create($"{Const.ARSAPI}?uuid={UUId}&topic={topic.model}&lang={lang.lang}&key={ApiKey}");
             req.Proxy = new WebProxy();
             req.Method = "POST";
 
@@ -78,7 +73,10 @@ namespace YandexAPI.SpeechKitCloud.ASR
 
             dynamic des = JsonConvert.DeserializeObject(jsonText);
 
-            response.Success = des["recognitionResults"]["success"].ToString();
+            response.Success = des["recognitionResults"]["success"].ToString().Equals("1");
+
+            if (!response.Success)
+                return response;
 
             if (des["recognitionResults"]["variant"].Count == null)
                 response.Variants.Add(new Variant(des["recognitionResults"]["variant"]["confidence"].ToString(),

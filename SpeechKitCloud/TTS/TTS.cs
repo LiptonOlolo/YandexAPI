@@ -1,7 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.IO;
-using System.Net;
 using System.Threading.Tasks;
 
 namespace YandexAPI.SpeechKitCloud.TTS
@@ -11,6 +10,10 @@ namespace YandexAPI.SpeechKitCloud.TTS
     /// </summary>
     public sealed class YandexTTS
     {
+        /// <summary>
+        /// Конструктор класса YandexTTS.
+        /// </summary>
+        /// <param name="apiKey">Api ключ для синтеза речи.</param>
         public YandexTTS(string apiKey) => ApiKey = apiKey;
 
         /// <summary>
@@ -68,7 +71,7 @@ namespace YandexAPI.SpeechKitCloud.TTS
             if (speed < 0.1f || speed > 3.0f)
                 throw new ArgumentException("speed");
 
-            Dictionary<string, string> get = new Dictionary<string, string>()
+            return Web.GetData(Const.TTSAPI, new NameValueCollection
             {
                 ["key"] = ApiKey,
                 ["text"] = text,
@@ -77,14 +80,7 @@ namespace YandexAPI.SpeechKitCloud.TTS
                 ["speaker"] = speaker.ToString().ToLower(),
                 ["speed"] = speed.ToString(),
                 ["emotion"] = emotion.ToString().ToLower()
-            };
-
-            using (WebClient client = new WebClient { Proxy = new WebProxy() })
-            using (MemoryStream ms = new MemoryStream())
-            {
-                client.OpenRead(Web.GetUri(Const.TTSAPI, get)).CopyTo(ms);
-                return ms.ToArray();
-            }
+            });
         }
 
         /// <summary>

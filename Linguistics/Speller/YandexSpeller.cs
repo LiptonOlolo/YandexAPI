@@ -1,6 +1,5 @@
 ﻿using Newtonsoft.Json;
-using System.Collections.Generic;
-using System.Linq;
+using System.Collections.Specialized;
 using System.Threading.Tasks;
 using YandexAPI.Linguistics.Speller.Response;
 
@@ -25,9 +24,9 @@ namespace YandexAPI.Linguistics.Speller
         /// </summary>
         /// <param name="text"></param>
         /// <returns></returns>
-        public CheckText CheckText(string text) => JsonConvert.DeserializeObject<CheckText>(Web.GetJsonArray(API_CheckText, new Dictionary<string, string>()
+        public CheckText CheckText(string text) => JsonConvert.DeserializeObject<CheckText>(Web.Get<string[]>(API_CheckText, new NameValueCollection
         {
             ["text"] = text
-        }, null).ToArray()[0]);
+        }, null)[0]);
     }
 }

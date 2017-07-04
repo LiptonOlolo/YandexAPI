@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Specialized;
 using System.Threading.Tasks;
 using YandexAPI.Linguistics.Predictor.Response;
 
@@ -39,7 +38,7 @@ namespace YandexAPI.Linguistics.Predictor
         /// Возвращает список языков, поддерживаемых сервисом.
         /// </summary>
         /// <returns></returns>
-        public string[] GetLangs() => Web.GetJsonArray(API_GetLangs, new Dictionary<string, string>(), ApiKey).ToArray();
+        public string[] GetLangs() => Web.Get<string[]>(API_GetLangs, new NameValueCollection(), ApiKey);
 
         /// <summary>
         /// Возвращает наиболее вероятное продолжение текста, а также признак конца слова.
@@ -48,7 +47,7 @@ namespace YandexAPI.Linguistics.Predictor
         /// <param name="q">Текст, на который указывает курсор пользователя.</param>
         /// <param name="limit">Максимальное количество возвращаемых строк (по умолчанию 1).</param>
         /// <returns></returns>
-        public Complete Complete(string lang, string q, ushort limit = 1) => Web.Get<Complete>(API_Complete, new Dictionary<string, string>()
+        public Complete Complete(string lang, string q, ushort limit = 1) => Web.Get<Complete>(API_Complete, new NameValueCollection
         {
             ["lang"] = lang,
             ["q"] = q,

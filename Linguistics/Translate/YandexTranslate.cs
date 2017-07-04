@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Threading.Tasks;
 using YandexAPI.Linguistics.Translate.Response;
 
@@ -60,7 +61,7 @@ namespace YandexAPI.Linguistics.Translate
         ///         В этом случае сервис пытается определить исходный язык автоматически.
         /// </param>
         /// <returns></returns>
-        public TranslateText Translate(string text, string lang) => Web.Get<TranslateText>(API_Translate, new Dictionary<string, string>()
+        public TranslateText Translate(string text, string lang) => Web.Get<TranslateText>(API_Translate, new NameValueCollection
         {
             ["text"] = text,
             ["lang"] = lang
@@ -71,7 +72,7 @@ namespace YandexAPI.Linguistics.Translate
         /// </summary>
         /// <param name="ui">Названия языков будут выведены на языке, код которого соответствует этому параметру.</param>
         /// <returns></returns>
-        public GetLangs GetLangs(string ui = "ru") => Web.Get<GetLangs>(API_GetLangs, new Dictionary<string, string>()
+        public GetLangs GetLangs(string ui = "ru") => Web.Get<GetLangs>(API_GetLangs, new NameValueCollection
         {
             ["ui"] = ui
         }, ApiKey);
@@ -81,7 +82,7 @@ namespace YandexAPI.Linguistics.Translate
         /// </summary>
         /// <param name="text">Текст, язык которого требуется определить.</param>
         /// <returns></returns>
-        public DetectLang DetectLang(string text) => Web.Get<DetectLang>(API_DetectLang, new Dictionary<string, string>()
+        public DetectLang DetectLang(string text) => Web.Get<DetectLang>(API_DetectLang, new NameValueCollection
         {
             ["text"] = text
         }, ApiKey);

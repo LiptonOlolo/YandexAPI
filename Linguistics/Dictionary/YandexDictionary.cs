@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Specialized;
 using System.Threading.Tasks;
 using YandexAPI.Linguistics.Dictionary.Response;
 
@@ -40,7 +39,7 @@ namespace YandexAPI.Linguistics.Dictionary
         /// Возвращает список направлений перевода, поддерживаемых сервисом.
         /// </summary>
         /// <returns></returns>
-        public string[] GetLangs() => Web.GetJsonArray(API_GetLangs, new Dictionary<string, string>(), ApiKey).ToArray();
+        public string[] GetLangs() => Web.Get<string[]>(API_GetLangs, new NameValueCollection(), ApiKey);
 
         /// <summary>
         /// Осуществляет поиск слова или фразы в словаре и возвращает автоматически сформированную словарную статью.
@@ -50,7 +49,7 @@ namespace YandexAPI.Linguistics.Dictionary
         /// Например, "en-ru" задает перевод с английского на русский.</param>
         /// <param name="text">Слово или фраза, которые требуется найти в словаре.</param>
         /// <returns></returns>
-        public Lookup Lookup(string lang, string text) => Web.Get<Lookup>(API_lookup, new Dictionary<string, string>()
+        public Lookup Lookup(string lang, string text) => Web.Get<Lookup>(API_lookup, new NameValueCollection
         {
             ["lang"] = lang,
             ["text"] = text
