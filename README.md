@@ -3,6 +3,7 @@
 # Примеры работы в RoslynPad:
 
 #### Добавлены карты YandexAPI.MapsStaticAPI.
+#### Примеры находятся в 'MapsExamples'.
 
 ### YandexAPI.SpeechKitCloud.TTS
 ```C#
