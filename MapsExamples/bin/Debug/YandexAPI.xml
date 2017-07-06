@@ -1,0 +1,1113 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>YandexAPI</name>
+    </assembly>
+    <members>
+        <member name="T:YandexAPI.Linguistics.Dictionary.YandexDictionary">
+            <summary>
+            API Yandex Словаря.
+            </summary>
+        </member>
+        <member name="P:YandexAPI.Linguistics.Dictionary.YandexDictionary.ApiKey">
+            <summary>
+            Api ключ для словаря, начинается с 'dict'.
+            </summary>
+        </member>
+        <member name="M:YandexAPI.Linguistics.Dictionary.YandexDictionary.GetLangsAsync">
+            <summary>
+            Асинхронно возвращает список направлений перевода, поддерживаемых сервисом.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:YandexAPI.Linguistics.Dictionary.YandexDictionary.LookupAsync(System.String,System.String)">
+            <summary>
+            Осуществляет асинхронный поиск слова или фразы в словаре и возвращает автоматически сформированную словарную статью.
+            </summary>
+            <param name="lang">
+            Направление перевода (например, "en-ru"). Задается в виде пары кодов языков, перечисленных через дефис. 
+            Например, "en-ru" задает перевод с английского на русский.</param>
+            <param name="text">Слово или фраза, которые требуется найти в словаре.</param>
+            <returns></returns>
+        </member>
+        <member name="M:YandexAPI.Linguistics.Dictionary.YandexDictionary.GetLangs">
+            <summary>
+            Возвращает список направлений перевода, поддерживаемых сервисом.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:YandexAPI.Linguistics.Dictionary.YandexDictionary.Lookup(System.String,System.String)">
+            <summary>
+            Осуществляет поиск слова или фразы в словаре и возвращает автоматически сформированную словарную статью.
+            </summary>
+            <param name="lang">
+            Направление перевода (например, "en-ru"). Задается в виде пары кодов языков, перечисленных через дефис. 
+            Например, "en-ru" задает перевод с английского на русский.</param>
+            <param name="text">Слово или фраза, которые требуется найти в словаре.</param>
+            <returns></returns>
+        </member>
+        <member name="T:YandexAPI.Linguistics.Predictor.YandexPredictor">
+            <summary>
+            API Yandex Предиктора.
+            </summary>
+        </member>
+        <member name="P:YandexAPI.Linguistics.Predictor.YandexPredictor.ApiKey">
+            <summary>
+            Api ключ для предиктора, начинается с 'pdct'.
+            </summary>
+        </member>
+        <member name="M:YandexAPI.Linguistics.Predictor.YandexPredictor.GetLangsAsync">
+            <summary>
+            Асинхронно возвращает список языков, поддерживаемых сервисом.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:YandexAPI.Linguistics.Predictor.YandexPredictor.CompleteAsync(System.String,System.String,System.UInt16)">
+            <summary>
+            Асинхронно возвращает наиболее вероятное продолжение текста, а также признак конца слова.
+            </summary>
+            <param name="lang">Язык текста (например, "en"). Список языков можно получить с помощью метода GetLangs.</param>
+            <param name="q">Текст, на который указывает курсор пользователя.</param>
+            <param name="limit">Максимальное количество возвращаемых строк (по умолчанию 1).</param>
+            <returns></returns>
+        </member>
+        <member name="M:YandexAPI.Linguistics.Predictor.YandexPredictor.GetLangs">
+            <summary>
+            Возвращает список языков, поддерживаемых сервисом.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:YandexAPI.Linguistics.Predictor.YandexPredictor.Complete(System.String,System.String,System.UInt16)">
+            <summary>
+            Возвращает наиболее вероятное продолжение текста, а также признак конца слова.
+            </summary>
+            <param name="lang">Язык текста (например, "en"). Список языков можно получить с помощью метода GetLangs.</param>
+            <param name="q">Текст, на который указывает курсор пользователя.</param>
+            <param name="limit">Максимальное количество возвращаемых строк (по умолчанию 1).</param>
+            <returns></returns>
+        </member>
+        <member name="T:YandexAPI.Linguistics.Speller.YandexSpeller">
+            <summary>
+            API Yandex Спеллера.
+            </summary>
+        </member>
+        <member name="M:YandexAPI.Linguistics.Speller.YandexSpeller.CheckTextAsync(System.String)">
+            <summary>
+            Асинхронно проверяет орфографию в указанном отрывке текста.
+            </summary>
+            <param name="text"></param>
+            <returns></returns>
+        </member>
+        <member name="M:YandexAPI.Linguistics.Speller.YandexSpeller.CheckText(System.String)">
+            <summary>
+            Проверяет орфографию в указанном отрывке текста.
+            </summary>
+            <param name="text"></param>
+            <returns></returns>
+        </member>
+        <member name="F:YandexAPI.Linguistics.Translate.Response.DetectLang.code">
+            <summary>
+            Код ответа.
+            </summary>
+        </member>
+        <member name="F:YandexAPI.Linguistics.Translate.Response.DetectLang.lang">
+            <summary>
+            Язык, на котором написан заданный текст.
+            </summary>
+        </member>
+        <member name="F:YandexAPI.Linguistics.Translate.Response.GetLangs.dirs">
+            <summary>
+            Возможные направления перевода.
+            </summary>
+        </member>
+        <member name="F:YandexAPI.Linguistics.Translate.Response.GetLangs.langs">
+            <summary>
+            Список всех языков, которые поддериживаются переводчиком.
+            </summary>
+        </member>
+        <member name="F:YandexAPI.Linguistics.Translate.Response.TranslateText.code">
+            <summary>
+            Код ответа.
+            </summary>
+        </member>
+        <member name="F:YandexAPI.Linguistics.Translate.Response.TranslateText.lang">
+            <summary>
+            Язык перевода. Либо пара языков.
+            </summary>
+        </member>
+        <member name="F:YandexAPI.Linguistics.Translate.Response.TranslateText.text">
+            <summary>
+            Переведенный текст.
+            </summary>
+        </member>
+        <member name="T:YandexAPI.Linguistics.Translate.YandexTranslate">
+            <summary>
+            API Yandex Переводчика.
+            </summary>
+        </member>
+        <member name="P:YandexAPI.Linguistics.Translate.YandexTranslate.ApiKey">
+            <summary>
+            Api ключ для переводчика, начинается с 'trnsl'.
+            </summary>
+        </member>
+        <member name="M:YandexAPI.Linguistics.Translate.YandexTranslate.DetectLangAsync(System.String)">
+            <summary>
+            Асинхронное определение языка, на котором написан заданный текст.
+            </summary>
+            <param name="text">Текст, язык которого требуется определить.</param>
+            <returns></returns>
+        </member>
+        <member name="M:YandexAPI.Linguistics.Translate.YandexTranslate.GetLangsAsync(System.String)">
+            <summary>
+            Асинхронное получение списка всех поддерживаемых языков.
+            </summary>
+            <param name="ui">Названия языков будут выведены на языке, код которого соответствует этому параметру.</param>
+            <returns></returns>
+        </member>
+        <member name="M:YandexAPI.Linguistics.Translate.YandexTranslate.TranslateAsync(System.String,System.String)">
+            <summary>
+            Асинхронный перевод текста на заданный язык.
+            </summary>
+            <param name="text">Текст, который необходимо перевести.</param>
+            <param name="lang">
+            Направление перевода. Может задаваться одним из следующих способов:
+                1) В виде пары кодов языков («с какого»-«на какой»), разделенных дефисом. 
+                    Например, en-ru обозначает перевод с английского на русский.
+                2) В виде кода конечного языка (например ru). 
+                    В этом случае сервис пытается определить исходный язык автоматически.
+            </param>
+            <returns></returns>
+        </member>
+        <member name="M:YandexAPI.Linguistics.Translate.YandexTranslate.Translate(System.String,System.String)">
+            <summary>
+            Перевод текста на заданный язык.
+            </summary>
+            <param name="text">Текст, который необходимо перевести.</param>
+            <param name="lang">
+            Направление перевода. Может задаваться одним из следующих способов:
+                1) В виде пары кодов языков («с какого»-«на какой»), разделенных дефисом. 
+                    Например, en-ru обозначает перевод с английского на русский.
+                2) В виде кода конечного языка (например ru). 
+                    В этом случае сервис пытается определить исходный язык автоматически.
+            </param>
+            <returns></returns>
+        </member>
+        <member name="M:YandexAPI.Linguistics.Translate.YandexTranslate.GetLangs(System.String)">
+            <summary>
+            Получение списка всех поддерживаемых языков.
+            </summary>
+            <param name="ui">Названия языков будут выведены на языке, код которого соответствует этому параметру.</param>
+            <returns></returns>
+        </member>
+        <member name="M:YandexAPI.Linguistics.Translate.YandexTranslate.DetectLang(System.String)">
+            <summary>
+            Определение языка, на котором написан заданный текст.
+            </summary>
+            <param name="text">Текст, язык которого требуется определить.</param>
+            <returns></returns>
+        </member>
+        <member name="T:YandexAPI.StaticMapsAPI.MapPoint">
+            <summary>
+            Долгота и широта центра карты в градусах.
+            </summary>
+        </member>
+        <member name="M:YandexAPI.StaticMapsAPI.MapPoint.#ctor(System.Single,System.Single)">
+            <summary>
+            Конструктор класса MapPoint.
+            </summary>
+            <param name="longitude">Долгота.</param>
+            <param name="latitude">Широта.</param>
+        </member>
+        <member name="F:YandexAPI.StaticMapsAPI.MapPoint.Longitude">
+            <summary>
+            Долгота.
+            </summary>
+        </member>
+        <member name="F:YandexAPI.StaticMapsAPI.MapPoint.Latitude">
+            <summary>
+            Широта.
+            </summary>
+        </member>
+        <member name="M:YandexAPI.StaticMapsAPI.MapPoint.ToString">
+            <summary>
+            Получить точку карты в формате {Долгота},{Широта}.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:YandexAPI.StaticMapsAPI.MapType">
+            <summary>
+            Перечень слоев, определяющих тип карты.
+            </summary>
+        </member>
+        <member name="F:YandexAPI.StaticMapsAPI.MapType.type">
+            <summary>
+            Тип карты.
+            </summary>
+        </member>
+        <member name="F:YandexAPI.StaticMapsAPI.MapType.Map">
+            <summary>
+            Схема местности и названия географических объектов.
+            </summary>
+        </member>
+        <member name="F:YandexAPI.StaticMapsAPI.MapType.Sat">
+            <summary>
+            Местность, сфотографированная со спутника.
+            </summary>
+        </member>
+        <member name="F:YandexAPI.StaticMapsAPI.MapType.Skl">
+            <summary>
+            Названия географических объектов.
+            </summary>
+        </member>
+        <member name="F:YandexAPI.StaticMapsAPI.MapType.Trf">
+            <summary>
+            Слой пробок.
+            </summary>
+        </member>
+        <member name="M:YandexAPI.StaticMapsAPI.MapType.ToString">
+            <summary>
+            Возвращает тип карты.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:YandexAPI.StaticMapsAPI.Lang">
+            <summary>
+            Язык карты.
+            </summary>
+        </member>
+        <member name="F:YandexAPI.StaticMapsAPI.Lang.lang">
+            <summary>
+            Язык карты.
+            </summary>
+        </member>
+        <member name="F:YandexAPI.StaticMapsAPI.Lang.RuRu">
+            <summary>
+            RuRu.
+            </summary>
+        </member>
+        <member name="F:YandexAPI.StaticMapsAPI.Lang.EnUs">
+            <summary>
+            EnUs.
+            </summary>
+        </member>
+        <member name="F:YandexAPI.StaticMapsAPI.Lang.EnRu">
+            <summary>
+            EnRu.
+            </summary>
+        </member>
+        <member name="F:YandexAPI.StaticMapsAPI.Lang.RuUa">
+            <summary>
+            RuUa.
+            </summary>
+        </member>
+        <member name="F:YandexAPI.StaticMapsAPI.Lang.UkUa">
+            <summary>
+            UkUa.
+            </summary>
+        </member>
+        <member name="F:YandexAPI.StaticMapsAPI.Lang.TrTr">
+            <summary>
+            TrTr.
+            </summary>
+        </member>
+        <member name="T:YandexAPI.StaticMapsAPI.Line">
+            <summary>
+            Линия на карте.
+            </summary>
+        </member>
+        <member name="M:YandexAPI.StaticMapsAPI.Line.#ctor(System.Byte,System.Drawing.Color,YandexAPI.StaticMapsAPI.MapPoint[])">
+            <summary>
+            Конструктор класса Line.
+            </summary>
+            <param name="thickness">Толщина линии (пикселы).</param>
+            <param name="lineColor">Цвет линии.</param>
+            <param name="points">Точки линии.</param>
+        </member>
+        <member name="P:YandexAPI.StaticMapsAPI.Line.Thickness">
+            <summary>
+            Толщина линии (пикселы).
+            </summary>
+        </member>
+        <member name="P:YandexAPI.StaticMapsAPI.Line.LineColor">
+            <summary>
+            Цвет линии.
+            </summary>
+        </member>
+        <member name="P:YandexAPI.StaticMapsAPI.Line.Points">
+            <summary>
+            Точки линии.
+            </summary>
+        </member>
+        <member name="M:YandexAPI.StaticMapsAPI.Line.GetHexColor(System.Drawing.Color)">
+            <summary>
+            Получить строку цвета в HEX формате.
+            Формат: {красный}{зеленый}{синий}{альфа(прозрачность)}.
+            </summary>
+            <param name="c">Цвет.</param>
+            <returns></returns>
+        </member>
+        <member name="M:YandexAPI.StaticMapsAPI.Line.ToString">
+            <summary>
+            Получить сформированную строку для линии.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:YandexAPI.StaticMapsAPI.Marker">
+            <summary>
+            Маркер для карты.
+            </summary>
+        </member>
+        <member name="P:YandexAPI.StaticMapsAPI.Marker.Style">
+            <summary>
+            Стиль маркера.
+            </summary>
+        </member>
+        <member name="P:YandexAPI.StaticMapsAPI.Marker.ChangeSize">
+            <summary>
+            Получает значение, указывающее на то, можно ли изменять размер маркера или нет.
+            </summary>
+        </member>
+        <member name="P:YandexAPI.StaticMapsAPI.Marker.ChangeContent">
+            <summary>
+            Получает значение, указывающее на то, можно ли изменять контент маркера или нет.
+            </summary>
+        </member>
+        <member name="P:YandexAPI.StaticMapsAPI.Marker.Point">
+            <summary>
+            Позиция маркера.
+            </summary>
+        </member>
+        <member name="P:YandexAPI.StaticMapsAPI.Marker.Color">
+            <summary>
+            Цвет маркера.
+            </summary>
+        </member>
+        <member name="P:YandexAPI.StaticMapsAPI.Marker.Size">
+            <summary>
+            Размер маркера.
+            </summary>
+        </member>
+        <member name="P:YandexAPI.StaticMapsAPI.Marker.Content">
+            <summary>
+            Текст маркера.
+            </summary>
+        </member>
+        <member name="T:YandexAPI.StaticMapsAPI.MarkerSize">
+            <summary>
+            Размер маркера.
+            </summary>
+        </member>
+        <member name="F:YandexAPI.StaticMapsAPI.MarkerSize.S">
+            <summary>
+            Маленький.
+            </summary>
+        </member>
+        <member name="F:YandexAPI.StaticMapsAPI.MarkerSize.M">
+            <summary>
+            Средний
+            </summary>
+        </member>
+        <member name="F:YandexAPI.StaticMapsAPI.MarkerSize.L">
+            <summary>
+            Большой.
+            </summary>
+        </member>
+        <member name="T:YandexAPI.StaticMapsAPI.Marker_Flag">
+            <summary>
+            Маркер 'flag'.
+            Без размера и контента.
+            </summary>
+        </member>
+        <member name="P:YandexAPI.StaticMapsAPI.Marker_Flag.Flag">
+            <summary>
+            Флаг.
+            </summary>
+        </member>
+        <member name="T:YandexAPI.StaticMapsAPI.Marker_PM">
+            <summary>
+            Маркер 'pm'.
+            Размер: любой.
+            Контент:
+            для размеров s и m — число от 1 до 99,
+            для размера l — число от 1 до 100.
+            </summary>
+        </member>
+        <member name="P:YandexAPI.StaticMapsAPI.Marker_PM.Wt">
+            <summary>
+            Белый.
+            </summary>
+        </member>
+        <member name="P:YandexAPI.StaticMapsAPI.Marker_PM.Do">
+            <summary>
+            Темно-оранжевый.
+            </summary>
+        </member>
+        <member name="P:YandexAPI.StaticMapsAPI.Marker_PM.Db">
+            <summary>
+            Темно-синий.
+            </summary>
+        </member>
+        <member name="P:YandexAPI.StaticMapsAPI.Marker_PM.Bl">
+            <summary>
+            Синий.
+            </summary>
+        </member>
+        <member name="P:YandexAPI.StaticMapsAPI.Marker_PM.Gn">
+            <summary>
+            Зеленый.
+            </summary>
+        </member>
+        <member name="P:YandexAPI.StaticMapsAPI.Marker_PM.Gr">
+            <summary>
+            Серый.
+            </summary>
+        </member>
+        <member name="P:YandexAPI.StaticMapsAPI.Marker_PM.Lb">
+            <summary>
+            Светло-синий.
+            </summary>
+        </member>
+        <member name="P:YandexAPI.StaticMapsAPI.Marker_PM.Nt">
+            <summary>
+            Темная ночь.
+            </summary>
+        </member>
+        <member name="P:YandexAPI.StaticMapsAPI.Marker_PM.Or">
+            <summary>
+            Оранжевый.
+            </summary>
+        </member>
+        <member name="P:YandexAPI.StaticMapsAPI.Marker_PM.Pn">
+            <summary>
+            Розовый.
+            </summary>
+        </member>
+        <member name="P:YandexAPI.StaticMapsAPI.Marker_PM.Rd">
+            <summary>
+            Красный.
+            </summary>
+        </member>
+        <member name="P:YandexAPI.StaticMapsAPI.Marker_PM.Vv">
+            <summary>
+            Фиолетовый.
+            </summary>
+        </member>
+        <member name="P:YandexAPI.StaticMapsAPI.Marker_PM.Yw">
+            <summary>
+            Желтый.
+            </summary>
+        </member>
+        <member name="P:YandexAPI.StaticMapsAPI.Marker_PM.A">
+            <summary>
+            С буквой 'А'.
+            </summary>
+        </member>
+        <member name="P:YandexAPI.StaticMapsAPI.Marker_PM.B">
+            <summary>
+            С буквой 'Б'.
+            </summary>
+        </member>
+        <member name="T:YandexAPI.StaticMapsAPI.Marker_PM2">
+            <summary>
+            Маркер 'pm2'.
+            Размер: M, L.
+            Контент:
+            число от 1 до 99.
+            </summary>
+        </member>
+        <member name="P:YandexAPI.StaticMapsAPI.Marker_PM2.Wt">
+            <summary>
+            Белый.
+            </summary>
+        </member>
+        <member name="P:YandexAPI.StaticMapsAPI.Marker_PM2.Do">
+            <summary>
+            Темно-оранжевый.
+            </summary>
+        </member>
+        <member name="P:YandexAPI.StaticMapsAPI.Marker_PM2.Db">
+            <summary>
+            Темно-синий.
+            </summary>
+        </member>
+        <member name="P:YandexAPI.StaticMapsAPI.Marker_PM2.Bl">
+            <summary>
+            Синий.
+            </summary>
+        </member>
+        <member name="P:YandexAPI.StaticMapsAPI.Marker_PM2.Gn">
+            <summary>
+            Зеленый
+            </summary>
+        </member>
+        <member name="P:YandexAPI.StaticMapsAPI.Marker_PM2.Dg">
+            <summary>
+            Темно-зеленый.
+            </summary>
+        </member>
+        <member name="P:YandexAPI.StaticMapsAPI.Marker_PM2.Gr">
+            <summary>
+            Серый.
+            </summary>
+        </member>
+        <member name="P:YandexAPI.StaticMapsAPI.Marker_PM2.Lb">
+            <summary>
+            Светло-синий.
+            </summary>
+        </member>
+        <member name="P:YandexAPI.StaticMapsAPI.Marker_PM2.Nt">
+            <summary>
+            Темная ночь.
+            </summary>
+        </member>
+        <member name="P:YandexAPI.StaticMapsAPI.Marker_PM2.Or">
+            <summary>
+            Оранжевый.
+            </summary>
+        </member>
+        <member name="P:YandexAPI.StaticMapsAPI.Marker_PM2.Pn">
+            <summary>
+            Розовый.
+            </summary>
+        </member>
+        <member name="P:YandexAPI.StaticMapsAPI.Marker_PM2.Rd">
+            <summary>
+            Красный
+            </summary>
+        </member>
+        <member name="P:YandexAPI.StaticMapsAPI.Marker_PM2.Vv">
+            <summary>
+            Фиолетовый.
+            </summary>
+        </member>
+        <member name="P:YandexAPI.StaticMapsAPI.Marker_PM2.Yw">
+            <summary>
+            Желтый.
+            </summary>
+        </member>
+        <member name="P:YandexAPI.StaticMapsAPI.Marker_PM2.A">
+            <summary>
+            С буквой "А" (без указания контента).
+            </summary>
+        </member>
+        <member name="P:YandexAPI.StaticMapsAPI.Marker_PM2.B">
+            <summary>
+            С буквой "Б" (без указания контента).
+            </summary>
+        </member>
+        <member name="P:YandexAPI.StaticMapsAPI.Marker_PM2.Org">
+            <summary>
+            Голубой (без указания контента).
+            </summary>
+        </member>
+        <member name="P:YandexAPI.StaticMapsAPI.Marker_PM2.Dir">
+            <summary>
+            Фиолетовый (без указания контента).
+            </summary>
+        </member>
+        <member name="P:YandexAPI.StaticMapsAPI.Marker_PM2.Blyw">
+            <summary>
+            Голубой с жёлтой точкой.
+            </summary>
+        </member>
+        <member name="T:YandexAPI.StaticMapsAPI.Marker_Vector">
+            <summary>
+            Векторные маркеры.
+            Без размера и контента.
+            </summary>
+        </member>
+        <member name="P:YandexAPI.StaticMapsAPI.Marker_Vector.Org">
+            <summary>
+            Голубая метка с хвостиком
+            </summary>
+        </member>
+        <member name="P:YandexAPI.StaticMapsAPI.Marker_Vector.Comma">
+            <summary>
+            Голубая метка с кругом в центре.
+            </summary>
+        </member>
+        <member name="P:YandexAPI.StaticMapsAPI.Marker_Vector.Round">
+            <summary>
+            Голубая метка с в виде круга
+            </summary>
+        </member>
+        <member name="P:YandexAPI.StaticMapsAPI.Marker_Vector.Home">
+            <summary>
+            Значок дома.
+            </summary>
+        </member>
+        <member name="P:YandexAPI.StaticMapsAPI.Marker_Vector.Work">
+            <summary>
+            Значок работы.
+            </summary>
+        </member>
+        <member name="P:YandexAPI.StaticMapsAPI.Marker_Vector.Yandex">
+            <summary>
+            Значок с логотипом Яндекса.
+            </summary>
+        </member>
+        <member name="T:YandexAPI.StaticMapsAPI.Marker_VK">
+            <summary>
+            Маркер 'vk' (кнопка).
+            Размер: M.
+            Без контента.
+            </summary>
+        </member>
+        <member name="P:YandexAPI.StaticMapsAPI.Marker_VK.Bk">
+            <summary>
+            Черная кнопка.
+            </summary>
+        </member>
+        <member name="P:YandexAPI.StaticMapsAPI.Marker_VK.Gr">
+            <summary>
+            Серая кнопка.
+            </summary>
+        </member>
+        <member name="T:YandexAPI.StaticMapsAPI.Polygon">
+            <summary>
+            Многоугольник на карте.
+            </summary>
+        </member>
+        <member name="M:YandexAPI.StaticMapsAPI.Polygon.#ctor(System.Byte,System.Drawing.Color,System.Drawing.Color,YandexAPI.StaticMapsAPI.MapPoint[])">
+            <summary>
+            Конструктор класса Polygon.
+            </summary>
+            <param name="thickness">Толщина линии (пикселы).</param>
+            <param name="lineColor">Цвет линий.</param>
+            <param name="backColor">Цвет заливки.</param>
+            <param name="points">Точки линий.</param>
+        </member>
+        <member name="P:YandexAPI.StaticMapsAPI.Polygon.BackColor">
+            <summary>
+            Цвет заливки многоугольника.
+            </summary>
+        </member>
+        <member name="M:YandexAPI.StaticMapsAPI.Polygon.ToString">
+            <summary>
+            Получить сформированную строку для многоугольника.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:YandexAPI.StaticMapsAPI.YandexStaticMapAPI">
+            <summary>
+            Yandex API статичных карт. (Static API)
+            </summary>
+        </member>
+        <member name="F:YandexAPI.StaticMapsAPI.YandexStaticMapAPI.DefaultImageSize">
+            <summary>
+            Стандартный размер получаемого изображения карты.
+            </summary>
+        </member>
+        <member name="M:YandexAPI.StaticMapsAPI.YandexStaticMapAPI.GetMapAsync(YandexAPI.StaticMapsAPI.MapType[],YandexAPI.StaticMapsAPI.MapPoint,System.Nullable{System.Single},System.Nullable{System.Int16},System.Nullable{System.Drawing.Size},System.Nullable{System.Single},YandexAPI.StaticMapsAPI.Marker[],YandexAPI.StaticMapsAPI.Line[],YandexAPI.StaticMapsAPI.Polygon[],YandexAPI.StaticMapsAPI.Lang)">
+            <summary>
+            Асинхронно получить изображение карты.
+            </summary>
+            <param name="mapType">Перечень слоев, определяющих тип карты.</param>
+            <param name="mapCenter">Долгота и широта центра карты в градусах.</param>
+            <param name="spn">Протяженность области показа карты по долготе и широте (в градусах).</param>
+            <param name="z">Уровень масштабирования карты (0-17).</param>
+            <param name="size">Ширина и высота запрашиваемого изображения карты (в пикселах).</param>
+            <param name="scale">
+            Коэффициент увеличения объектов на карте.
+            Может принимать дробное значение от 1.0 до 4.0.
+            </param>
+            <param name="markers">Маркеры для карты.</param>
+            <param name="lines">Линии на карте, обратите внимание, что при добавлении линий не нужно указывать параметр mapCenter.</param>
+            <param name="polygons">Многоугольник на карте, обратите внимание, что при добавлении линий не нужно указывать параметр mapCenter.</param>
+            <param name="lang">Язык карты.</param>
+            <returns></returns>
+        </member>
+        <member name="M:YandexAPI.StaticMapsAPI.YandexStaticMapAPI.GetMap(YandexAPI.StaticMapsAPI.MapType[],YandexAPI.StaticMapsAPI.MapPoint,System.Nullable{System.Single},System.Nullable{System.Int16},System.Nullable{System.Drawing.Size},System.Nullable{System.Single},YandexAPI.StaticMapsAPI.Marker[],YandexAPI.StaticMapsAPI.Line[],YandexAPI.StaticMapsAPI.Polygon[],YandexAPI.StaticMapsAPI.Lang)">
+            <summary>
+            Получить изображение карты.
+            </summary>
+            <param name="mapType">Перечень слоев, определяющих тип карты.</param>
+            <param name="mapCenter">Долгота и широта центра карты в градусах.</param>
+            <param name="spn">Протяженность области показа карты по долготе и широте (в градусах).</param>
+            <param name="z">Уровень масштабирования карты (0-17).</param>
+            <param name="size">Ширина и высота запрашиваемого изображения карты (в пикселах).</param>
+            <param name="scale">
+            Коэффициент увеличения объектов на карте.
+            Может принимать дробное значение от 1.0 до 4.0.
+            </param>
+            <param name="markers">Маркеры для карты.</param>
+            <param name="lines">Линии на карте, обратите внимание, что при добавлении линий не нужно указывать параметр mapCenter.</param>
+            <param name="polygons">Многоугольник на карте, обратите внимание, что при добавлении линий не нужно указывать параметр mapCenter.</param>
+            <param name="lang">Язык карты.</param>
+            <returns></returns>
+        </member>
+        <member name="T:YandexAPI.SpeechKitCloud.ASR.YandexASR">
+            <summary>
+            Распознавание речи.
+            </summary>
+        </member>
+        <member name="M:YandexAPI.SpeechKitCloud.ASR.YandexASR.#ctor(System.String)">
+            <summary>
+            Конструктор класса YandexASR.
+            </summary>
+            <param name="apiKey">Api ключ для распознавания речи.</param>
+        </member>
+        <member name="P:YandexAPI.SpeechKitCloud.ASR.YandexASR.ApiKey">
+            <summary>
+            Api ключ для распознования речи.
+            </summary>
+        </member>
+        <member name="P:YandexAPI.SpeechKitCloud.ASR.YandexASR.UUId">
+            <summary>
+            Уникальный идентификатор пользователя (Universally Unique Identifier) — это последовательность из 32-х шестнадцатеричных цифр (0—9, A—F).
+            </summary>
+        </member>
+        <member name="M:YandexAPI.SpeechKitCloud.ASR.YandexASR.VoiceToTextAsync(System.Byte[],YandexAPI.SpeechKitCloud.ASR.Topic,YandexAPI.SpeechKitCloud.Lang,YandexAPI.SpeechKitCloud.ASR.AudioFormat)">
+            <summary>
+            Асинхронное распознавание речи.
+            </summary>
+            <param name="voice">Двоичное содержимое аудио файла.</param>
+            <param name="topic">
+            Языковая модель, которую следует использовать при распознавании.
+            Примечание: чем точнее выбрана модель, тем лучше результат распознавания.
+            </param>
+            <param name="lang">Язык, для которого будет выполнено распознавание.</param>
+            <param name="audioFormat">Формат аудио, должен совпадать с форматом двоичных данных аудио файла (voice).</param>
+            <returns></returns>
+        </member>
+        <member name="M:YandexAPI.SpeechKitCloud.ASR.YandexASR.VoiceToText(System.Byte[],YandexAPI.SpeechKitCloud.ASR.Topic,YandexAPI.SpeechKitCloud.Lang,YandexAPI.SpeechKitCloud.ASR.AudioFormat)">
+            <summary>
+            Распознавание речи.
+            </summary>
+            <param name="voice">Двоичное содержимое аудио файла.</param>
+            <param name="topic">
+            Языковая модель, которую следует использовать при распознавании.
+            Примечание: чем точнее выбрана модель, тем лучше результат распознавания.
+            </param>
+            <param name="lang">Язык, для которого будет выполнено распознавание.</param>
+            <param name="audioFormat">Формат аудио, должен совпадать с форматом двоичных данных аудио файла (voice).</param>
+            <returns></returns>
+        </member>
+        <member name="T:YandexAPI.SpeechKitCloud.ASR.AudioFormat">
+            <summary>
+            Формат аудио данных
+            </summary>
+        </member>
+        <member name="F:YandexAPI.SpeechKitCloud.ASR.AudioFormat.format">
+            <summary>
+            Формат аудио.
+            </summary>
+        </member>
+        <member name="F:YandexAPI.SpeechKitCloud.ASR.AudioFormat.WAV">
+            <summary>
+            Медиаконтейнер WAV может содержать аудио данные любого формата, например PCM.
+            </summary>
+        </member>
+        <member name="F:YandexAPI.SpeechKitCloud.ASR.AudioFormat.MP3">
+            <summary>
+            MPEG-1 Audio Layer 3 (MP3).
+            </summary>
+        </member>
+        <member name="F:YandexAPI.SpeechKitCloud.ASR.AudioFormat.OGG">
+            <summary>
+            Speex.
+            </summary>
+        </member>
+        <member name="F:YandexAPI.SpeechKitCloud.ASR.AudioFormat.OGGOpus">
+            <summary>
+            Opus.
+            </summary>
+        </member>
+        <member name="F:YandexAPI.SpeechKitCloud.ASR.AudioFormat.WebM">
+            <summary>
+            Opus.
+            </summary>
+        </member>
+        <member name="F:YandexAPI.SpeechKitCloud.ASR.AudioFormat.PCM16Bit16kRate">
+            <summary>
+            Linear PCM c частотой дискретизации 16000 Гц и разрядностью квантования 16 бит.
+            </summary>
+        </member>
+        <member name="F:YandexAPI.SpeechKitCloud.ASR.AudioFormat.PCM16Bit8kRate">
+            <summary>
+            Linear PCM c частотой дискретизации 8000 Гц и разрядностью квантования 16 бит.
+            </summary>
+        </member>
+        <member name="F:YandexAPI.SpeechKitCloud.ASR.AudioFormat.PCM13Bit8kRate">
+            <summary>
+            PCM на основе A-law. Частота дискретизации 8000 Гц, разрядность квантования 13 бит.
+            </summary>
+        </member>
+        <member name="T:YandexAPI.SpeechKitCloud.ASR.Topic">
+            <summary>
+            Языковая модель.
+            </summary>
+        </member>
+        <member name="F:YandexAPI.SpeechKitCloud.ASR.Topic.model">
+            <summary>
+            Языковая модель.
+            </summary>
+        </member>
+        <member name="F:YandexAPI.SpeechKitCloud.ASR.Topic.Queries">
+            <summary>
+            Короткие запросы — фразы (3—5 слов) на различные темы, в том числе запросы в поисковых системах (на сайтах).
+            Например:
+            [покажи следующий поворот]
+            [соединить с отделом продаж]
+            [еще чашку кофе и две мягких французских булочки]
+            [какая погода во владивостоке]
+            [напомни купить овощей и фруктов по дороге домой]
+            </summary>
+        </member>
+        <member name="F:YandexAPI.SpeechKitCloud.ASR.Topic.Maps">
+            <summary>
+            Адреса (maps) — адреса, названия организаций и географических объектов.
+            Например:
+            [поехали на улицу кирпичные выемки пять]
+            [сколько ехать от льва толстого до новой земли]
+            [покажи маршрут до музея маяковского]
+            </summary>
+        </member>
+        <member name="F:YandexAPI.SpeechKitCloud.ASR.Topic.Dates">
+            <summary>
+            Даты (dates) — названия месяцев, порядковые и количественные числительные.
+            Например:
+            [второго ноль седьмого две тысячи первого]
+            [двадцать седьмое апреля тысяча девятьсот девятнадцатого года]
+            </summary>
+        </member>
+        <member name="F:YandexAPI.SpeechKitCloud.ASR.Topic.Names">
+            <summary>
+            Имена (names) — имена и фамилии, просьбы соединить по телефону. Например:
+            [щукин платон]
+            [соедините с людчиком]
+            [переговорить с васей васиным]
+            </summary>
+        </member>
+        <member name="F:YandexAPI.SpeechKitCloud.ASR.Topic.Numbers">
+            <summary>
+            Числа (numbers) — количественные числительные от 1 до 999 и разделители — точка, запятая, тире. Модель подходит для диктовки номеров телефонов, счетов, документов.
+            Например:
+            [два двенадцать восемьдесят пять ноль шесть]
+            [сто пятьдесят семь запятая пятнадцать сорок три]
+            </summary>
+        </member>
+        <member name="F:YandexAPI.SpeechKitCloud.ASR.Topic.Music">
+            <summary>
+            Музыка (music) — названия музыкальных произведений и исполнителей. Модель не предназначена для распознавания музыкальных фрагментов. Подходит только для распознавания названий, имен авторов и исполнителей песен.
+            Например:
+            [третий концерт рахманинова для фортепиано с оркестром]
+            [алла пугачева любовь похожая на сон]
+            </summary>
+        </member>
+        <member name="F:YandexAPI.SpeechKitCloud.ASR.Topic.Buying">
+            <summary>
+            Заказы (buying) — фразы, связанные с оформлением заказов в интернет-магазинах (подтверждение заказа и форма доставки).
+            Например:
+            [верно хочу купить]
+            </summary>
+        </member>
+        <member name="T:YandexAPI.SpeechKitCloud.Lang">
+            <summary>
+            Язык, для которого будет выполнено распознавание.
+            </summary>
+        </member>
+        <member name="F:YandexAPI.SpeechKitCloud.Lang.lang">
+            <summary>
+            Язык синтеза речи.
+            </summary>
+        </member>
+        <member name="F:YandexAPI.SpeechKitCloud.Lang.Ru">
+            <summary>
+            Русский язык.
+            </summary>
+        </member>
+        <member name="F:YandexAPI.SpeechKitCloud.Lang.En">
+            <summary>
+            Английский язык.
+            </summary>
+        </member>
+        <member name="F:YandexAPI.SpeechKitCloud.Lang.Uk">
+            <summary>
+            Украинский язык.
+            </summary>
+        </member>
+        <member name="F:YandexAPI.SpeechKitCloud.Lang.Tr">
+            <summary>
+            Турецкий язык.
+            </summary>
+        </member>
+        <member name="T:YandexAPI.SpeechKitCloud.TTS.Format">
+            <summary>
+            Расширение синтезируемого файла (его формат).
+            </summary>
+        </member>
+        <member name="F:YandexAPI.SpeechKitCloud.TTS.Format.MP3">
+            <summary>
+            Аудио в формате MPEG, медиаконтейнер MPEG-1 Audio Layer 3.
+            </summary>
+        </member>
+        <member name="F:YandexAPI.SpeechKitCloud.TTS.Format.WAV">
+            <summary>
+            Аудио в формате PCM 16 бит, медиаконтейнер WAV
+            </summary>
+        </member>
+        <member name="F:YandexAPI.SpeechKitCloud.TTS.Format.Opus">
+            <summary>
+            Аудио в формате Opus, в качестве контейнера используется OGG.
+            </summary>
+        </member>
+        <member name="T:YandexAPI.SpeechKitCloud.TTS.Quality">
+            <summary>
+            Частота дискретизации и битрейт синтезируемого PCM-аудио (медиаконтейнер WAV).
+            Обратите внимание, параметр quality влияет на характеристики аудио только если format=wav.
+            </summary>
+        </member>
+        <member name="F:YandexAPI.SpeechKitCloud.TTS.Quality.Hi">
+            <summary>
+            Частота дискретизации 48 кГц и битрейт 768 кб/c.
+            </summary>
+        </member>
+        <member name="F:YandexAPI.SpeechKitCloud.TTS.Quality.Lo">
+            <summary>
+            Частота дискретизации 8 кГц и битрейт 128 кб/c.
+            </summary>
+        </member>
+        <member name="T:YandexAPI.SpeechKitCloud.TTS.Speaker">
+            <summary>
+            Голос синтезированной речи.
+            </summary>
+        </member>
+        <member name="F:YandexAPI.SpeechKitCloud.TTS.Speaker.Jane">
+            <summary>
+            Женщина.
+            </summary>
+        </member>
+        <member name="F:YandexAPI.SpeechKitCloud.TTS.Speaker.Oksana">
+            <summary>
+            Женщина.
+            </summary>
+        </member>
+        <member name="F:YandexAPI.SpeechKitCloud.TTS.Speaker.Alyss">
+            <summary>
+            Женщина.
+            </summary>
+        </member>
+        <member name="F:YandexAPI.SpeechKitCloud.TTS.Speaker.Omazh">
+            <summary>
+            Женщина.
+            </summary>
+        </member>
+        <member name="F:YandexAPI.SpeechKitCloud.TTS.Speaker.Zahar">
+            <summary>
+            Мужчина.
+            </summary>
+        </member>
+        <member name="F:YandexAPI.SpeechKitCloud.TTS.Speaker.Ermil">
+            <summary>
+            Мужчина.
+            </summary>
+        </member>
+        <member name="T:YandexAPI.SpeechKitCloud.TTS.Emotion">
+            <summary>
+            Эмоциональная окраска голоса.
+            </summary>
+        </member>
+        <member name="F:YandexAPI.SpeechKitCloud.TTS.Emotion.Good">
+            <summary>
+            Радостный, доброжелательный.
+            </summary>
+        </member>
+        <member name="F:YandexAPI.SpeechKitCloud.TTS.Emotion.Evil">
+            <summary>
+            Раздраженный.
+            </summary>
+        </member>
+        <member name="F:YandexAPI.SpeechKitCloud.TTS.Emotion.Neutral">
+            <summary>
+            Нейтральный.
+            </summary>
+        </member>
+        <member name="T:YandexAPI.SpeechKitCloud.TTS.YandexTTS">
+            <summary>
+            Синтез речи.
+            </summary>
+        </member>
+        <member name="M:YandexAPI.SpeechKitCloud.TTS.YandexTTS.#ctor(System.String)">
+            <summary>
+            Конструктор класса YandexTTS.
+            </summary>
+            <param name="apiKey">Api ключ для синтеза речи.</param>
+        </member>
+        <member name="P:YandexAPI.SpeechKitCloud.TTS.YandexTTS.ApiKey">
+            <summary>
+            Api ключ для синтеза речи.
+            </summary>
+        </member>
+        <member name="M:YandexAPI.SpeechKitCloud.TTS.YandexTTS.GetVoiceAsync(System.String,YandexAPI.SpeechKitCloud.Lang,YandexAPI.SpeechKitCloud.TTS.Format,YandexAPI.SpeechKitCloud.TTS.Quality,YandexAPI.SpeechKitCloud.TTS.Speaker,System.Single,YandexAPI.SpeechKitCloud.TTS.Emotion)">
+            <summary>
+            Асинхронный синтез текста в речь (Text to Speech (TTS)).
+            </summary>
+            <param name="text">
+            Текст, который нужно озвучить. Для передачи слов-омографов используйте + перед ударной гласной. Например, гот+ов или def+ect.
+            Ограничение на длину строки: 2000 байт.
+            </param>
+            <param name="lang">Язык.</param>
+            <param name="format">Расширение синтезируемого файла (его формат).</param>
+            <param name="quality">
+            Частота дискретизации и битрейт синтезируемого PCM-аудио (медиаконтейнер WAV).
+            Обратите внимание, параметр quality влияет на характеристики аудио только если format=wav.
+            </param>
+            <param name="speaker">Голос синтезированной речи.</param>
+            <param name="speed">
+            Скорость (темп) синтезированной речи. 
+            Скорость речи задается дробным числом в диапазоне от 0.1 до 3.0.
+            </param>
+            <param name="emotion">Эмоциональная окраска голоса.</param>
+            <returns></returns>
+        </member>
+        <member name="M:YandexAPI.SpeechKitCloud.TTS.YandexTTS.GetVoice(System.String,YandexAPI.SpeechKitCloud.Lang,YandexAPI.SpeechKitCloud.TTS.Format,YandexAPI.SpeechKitCloud.TTS.Quality,YandexAPI.SpeechKitCloud.TTS.Speaker,System.Single,YandexAPI.SpeechKitCloud.TTS.Emotion)">
+            <summary>
+            Синтез текста в речь (Text to Speech (TTS)).
+            </summary>
+            <param name="text">
+            Текст, который нужно озвучить. Для передачи слов-омографов используйте + перед ударной гласной. Например, гот+ов или def+ect.
+            Ограничение на длину строки: 2000 байт.
+            </param>
+            <param name="lang">Язык.</param>
+            <param name="format">Расширение синтезируемого файла (его формат).</param>
+            <param name="quality">
+            Частота дискретизации и битрейт синтезируемого PCM-аудио (медиаконтейнер WAV).
+            Обратите внимание, параметр quality влияет на характеристики аудио только если format=wav.
+            </param>
+            <param name="speaker">Голос синтезированной речи.</param>
+            <param name="speed">
+            Скорость (темп) синтезированной речи. 
+            Скорость речи задается дробным числом в диапазоне от 0.1 до 3.0.
+            </param>
+            <param name="emotion">Эмоциональная окраска голоса.</param>
+            <returns></returns>
+        </member>
+        <member name="M:YandexAPI.SpeechKitCloud.TTS.YandexTTS.SaveAudio(System.Byte[],System.String,System.String,YandexAPI.SpeechKitCloud.TTS.Format)">
+            <summary>
+            Сохранить аудио в файл.
+            </summary>
+            <param name="data">Аудио.</param>
+            <param name="name">Имя файла (без расширения).</param>
+            <param name="path">Путь, куда будет сохранен файл.</param>
+            <param name="format">Формат аудио.</param>
+        </member>
+        <member name="M:YandexAPI.Web.CreateClient">
+            <summary>
+            Получить экземпляр нового класса WebClient.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:YandexAPI.Web.GetData(System.String,System.Collections.Specialized.NameValueCollection)">
+            <summary>
+            Получить ответ от API в виде массива байт.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:YandexAPI.Web.Get``1(System.String,System.Collections.Specialized.NameValueCollection,System.String)">
+            <summary>
+            Получить ответ от API в нужном типе данных.
+            </summary>
+        </member>
+    </members>
+</doc>
