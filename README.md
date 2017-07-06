@@ -2,6 +2,8 @@
 
 # Примеры работы в RoslynPad:
 
+#### Добавлены карты YandexAPI.MapsStaticAPI.
+
 ### YandexAPI.SpeechKitCloud.TTS
 ```C#
 #r "YandexAPI.dll"

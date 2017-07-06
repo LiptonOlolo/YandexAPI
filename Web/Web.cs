@@ -1,4 +1,6 @@
 ﻿using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Net;
 using System.Text;
@@ -7,7 +9,15 @@ namespace YandexAPI
 {
     static class Web
     {
-        static WebClient CreateClient() => new WebClient { Encoding = Encoding.UTF8, Proxy = new WebProxy() };
+        /// <summary>
+        /// Получить экземпляр нового класса WebClient.
+        /// </summary>
+        /// <returns></returns>
+        public static WebClient CreateClient() => new WebClient
+        {
+            Encoding = Encoding.UTF8,
+            Proxy = new WebProxy()
+        };
 
         /// <summary>
         /// Получить ответ от API в виде массива байт.
@@ -24,9 +34,9 @@ namespace YandexAPI
         /// <summary>
         /// Получить ответ от API в нужном типе данных.
         /// </summary>
-        public static T Get<T>(string uri, NameValueCollection get, string apikey, bool writeApi = true)
+        public static T Get<T>(string uri, NameValueCollection get, string apikey)
         {
-            if (writeApi || apikey != null)
+            if (apikey != null)
                 get.Add("key", apikey);
 
             return JsonConvert.DeserializeObject<T>(GetString(uri, get));
