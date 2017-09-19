@@ -1,6 +1,7 @@
 ﻿using System.Collections.Specialized;
 using System.Threading.Tasks;
-using YandexAPI.Linguistics.Dictionary.Response;
+using YandexAPI.Linguistics.Dictionary.Responses;
+using YandexAPI.WebHelper;
 
 namespace YandexAPI.Linguistics.Dictionary
 {
@@ -9,50 +10,71 @@ namespace YandexAPI.Linguistics.Dictionary
     /// </summary>
     public sealed class YandexDictionary
     {
-        const string API_GetLangs = Const.DictionaryAPI + "getLangs";
-        const string API_lookup = Const.DictionaryAPI + "lookup";
+        const string API_GetLangs = Consts.DictionaryAPI + "getLangs";
+        const string API_lookup = Consts.DictionaryAPI + "lookup";
 
+        /// <summary>
+        /// API ключ переводчика.
+        /// </summary>
+        public string ApiKey { get; }
+
+        /// <summary>
+        /// Конструктор класса YandexDictionary.
+        /// </summary>
+        /// <param name="apiKey">API ключ переводчика.</param>
         public YandexDictionary(string apiKey) => ApiKey = apiKey;
-
-        /// <summary>
-        /// Api ключ для словаря, начинается с 'dict'.
-        /// </summary>
-        public string ApiKey { get; private set; }
-
-        /// <summary>
-        /// Асинхронно возвращает список направлений перевода, поддерживаемых сервисом.
-        /// </summary>
-        /// <returns></returns>
-        public async Task<string[]> GetLangsAsync() => await Task.Run(() => GetLangs());
-
-        /// <summary>
-        /// Осуществляет асинхронный поиск слова или фразы в словаре и возвращает автоматически сформированную словарную статью.
-        /// </summary>
-        /// <param name="lang">
-        /// Направление перевода (например, "en-ru"). Задается в виде пары кодов языков, перечисленных через дефис. 
-        /// Например, "en-ru" задает перевод с английского на русский.</param>
-        /// <param name="text">Слово или фраза, которые требуется найти в словаре.</param>
-        /// <returns></returns>
-        public async Task<Lookup> LookupAsync(string lang, string text) => await Task.Run(() => Lookup(lang, text));
 
         /// <summary>
         /// Возвращает список направлений перевода, поддерживаемых сервисом.
         /// </summary>
+        /// <exception cref="YandexException">Ошибка запроса.</exception>
         /// <returns></returns>
         public string[] GetLangs() => Web.Get<string[]>(API_GetLangs, new NameValueCollection(), ApiKey);
+
+        /// <summary>
+        /// Асинхронно возвращает список направлений перевода, поддерживаемых сервисом.
+        /// </summary>
+        /// <exception cref="YandexException">Ошибка запроса.</exception>
+        /// <returns></returns>
+        public async Task<string[]> GetLangsAsync() => await Task.Run(() => GetLangs());
 
         /// <summary>
         /// Осуществляет поиск слова или фразы в словаре и возвращает автоматически сформированную словарную статью.
         /// </summary>
         /// <param name="lang">
         /// Направление перевода (например, "en-ru"). Задается в виде пары кодов языков, перечисленных через дефис. 
-        /// Например, "en-ru" задает перевод с английского на русский.</param>
+        /// Например, "en-ru" задает перевод с английского на русский.
+        /// </param>
         /// <param name="text">Слово или фраза, которые требуется найти в словаре.</param>
+        /// <param name="ui">
+        /// Язык интерфейса пользователя, на котором будут отображаться названия частей речи в словарной статье.
+        /// </param>
+        /// <param name="flags">Опции поиска (битовая маска флагов).</param>
+        /// <exception cref="YandexException">Ошибка запроса.</exception>
         /// <returns></returns>
-        public Lookup Lookup(string lang, string text) => Web.Get<Lookup>(API_lookup, new NameValueCollection
+        public DictionaryLookup GetDictionary(Langs lang, string text, string ui, DictionaryFlags flags = DictionaryFlags.None) => Web.Get<DictionaryLookup>(API_lookup, new NameValueCollection
         {
-            ["lang"] = lang,
-            ["text"] = text
+            ["lang"] = lang.Lang,
+            ["text"] = text,
+            ["ui"] = ui,
+            ["flags"] = ((int)flags).ToString()
         }, ApiKey);
+
+        /// <summary>
+        /// Асинхронно осуществляет поиск слова или фразы в словаре и возвращает автоматически сформированную словарную статью.
+        /// </summary>
+        /// <param name="lang">
+        /// Направление перевода (например, "en-ru"). Задается в виде пары кодов языков, перечисленных через дефис. 
+        /// Например, "en-ru" задает перевод с английского на русский.
+        /// </param>
+        /// <param name="text">Слово или фраза, которые требуется найти в словаре.</param>
+        /// <param name="ui">
+        /// Язык интерфейса пользователя, на котором будут отображаться названия частей речи в словарной статье.
+        /// </param>
+        /// <param name="flags">Опции поиска (битовая маска флагов).</param>
+        /// <exception cref="YandexException">Ошибка запроса.</exception>
+        /// <returns></returns>
+        public async Task<DictionaryLookup> GetDictionaryAsync(Langs lang, string text, string ui, DictionaryFlags flags = DictionaryFlags.None) =>
+            await Task.Run(() => GetDictionary(lang, text, ui, flags));
     }
 }
